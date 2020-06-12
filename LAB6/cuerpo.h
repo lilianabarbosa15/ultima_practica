@@ -1,7 +1,13 @@
 #ifndef CUERPO_H
 #define CUERPO_H
 
-class Cuerpo{
+//Para los planetas:
+#include <QPainter>
+#include <QGraphicsItem>
+#include <QRectF>
+
+class Cuerpo: public QGraphicsEllipseItem
+{
     private:
         double posicionx;
         double posiciony;
@@ -17,18 +23,20 @@ class Cuerpo{
     public:
 
         Cuerpo(int Posicionx, int Posiciony);
-        double calculaAceleracion();
-        void setAx();
-        void setAy();
+        void calcularAx();
+        void calcularAy();
         void calcularTheta(double a, double b); //Calcula theta y lo asigna a la variable privada
+        void calcularDistancia(double x1, double y1);   //x1 y y1 son la posicion del sol
+
         void setPosicionx(int posicionx);
         void setPosiciony(int posiciony);
         void setMasa(double masa);
-        double getPosicionx();
-        double getPosiciony();
-        void distanciaCuerpo(double x1, double y1);   //x1 y y1 son la posicion del sol
-        double getAx();
-        double getAy();
+
+        double getPosicionx();  //muestra la posicion en x
+        double getPosiciony();  //muestra la posicion en y
+        double getAx(); //muestra la aceleracion en x
+        double getAy(); //muestra la aceleracion en y
+        double getMasa(); //muestra la masa del cuerpo
 };
 
 #endif // CUERPO_H

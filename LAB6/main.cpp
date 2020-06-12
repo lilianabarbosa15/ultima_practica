@@ -1,25 +1,25 @@
-#include "mainwindow.h"
 #include <QApplication>
-#include <QGraphicsScene>
-#include <QGraphicsView>
-#include "cuerpo.h"
-#include <iostream>
-#include <string>
-using namespace std;
+#include "simulacion.h"
+
+Simulacion *S;
 
 int main(int argc, char *argv[])
 {
-    Cuerpo cuerpo(8,5);
     QApplication a(argc, argv);
-    QGraphicsScene scene;
-    scene.addText("posicionX");
-    QGraphicsView view(&scene);
-    view.setMinimumSize(600,600);
-    view.setMaximumSize(800,800);
-    view.show();
+
+
+    /*
+    QWidget w;
+    w.setGeometry(0,0,200,200);
+    w.show();
+    */
+
+
+    S = new Simulacion();
+
+
+
     return a.exec();
-
-
 }
 
 

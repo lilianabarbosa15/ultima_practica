@@ -18,11 +18,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     cuerpo.cpp \
     main.cpp \
-    mainwindow.cpp
+    simulacion.cpp
 
 HEADERS += \
     cuerpo.h \
-    mainwindow.h
+    simulacion.h
 
 FORMS += \
     mainwindow.ui
