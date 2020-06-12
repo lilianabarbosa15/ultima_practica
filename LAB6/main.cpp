@@ -8,11 +8,16 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
 
-    /*
-    QWidget w;
-    w.setGeometry(0,0,200,200);
-    w.show();
-    */
+
+    //Tabla de visualización de los valores de los planetas
+    QWidget tabla;
+    tabla.setGeometry(7,300,0,0);
+    tabla.setFixedSize(350,200);
+
+    //tabla.setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    tabla.show();
+
+
 
 
     S = new Simulacion();

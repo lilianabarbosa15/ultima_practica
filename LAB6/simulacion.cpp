@@ -8,6 +8,15 @@ Simulacion::Simulacion(QWidget *parent)
     escena = new QGraphicsScene();
     //escena->setBackgroundBrush(QImage(":/FONDO_escena.png"));  //Fondo del espacio
 
+
+    //Que se pueda ver todo
+    view = new QGraphicsView(escena);
+    view->show();
+    view->setFixedSize(700,600);
+    escena->setSceneRect(0,0,tamanio,tamanio);
+
+
+
     //Crear el cuerpo central a la escena
     planeta = new Cuerpo(600,600);      //Al ingresar esos valores se debe mostrar el elemento en esa posicion
     planeta->setMasa(5000);
@@ -20,16 +29,9 @@ Simulacion::Simulacion(QWidget *parent)
     escena->addItem(planeta);
 
 
-    //Que se pueda ver todo
-    view = new QGraphicsView(escena);
-
-    view->show();
-    view->setFixedSize(700,600);
-    escena->setSceneRect(0,0,tamanio,tamanio);
-
-
 
     qDebug() << "Masa: " << planeta->getMasa();
+
 
 
 /*
