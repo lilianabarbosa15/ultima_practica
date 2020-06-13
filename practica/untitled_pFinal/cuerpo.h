@@ -44,5 +44,7 @@ class Cuerpo: public QGraphicsEllipseItem
         void acelerar(double posicion_X, double posicion_Y);
         void actualizar(double tiempo);
 
+        double getRadioC();
+
 };
 #endif // CUERPO_H

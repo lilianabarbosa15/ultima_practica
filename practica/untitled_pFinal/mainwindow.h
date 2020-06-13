@@ -10,8 +10,6 @@
 #include "grafica.h"
 
 
-
-
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -23,18 +21,26 @@ class MainWindow : public QMainWindow
     public:
         MainWindow(QWidget *parent = nullptr);
 
-        //Permite saber si se deshabilita la opción de añadir planetas e inicia la simulación:
-        bool inicio = false;
+        bool inicio = false;    //Permite saber si se deshabilita la opción de añadir planetas e inicia la simulación
 
         ~MainWindow();
 
     private slots:
+        void actualizar();
         void on_nuevoCuerpo_clicked();
         void on_pushButton_clicked();
 
-    public:
+    private:
         Ui::MainWindow *ui;
-        //QVector<grafica*> bars;   //Para crear varios planetas
+        QVector<Grafica*> cuerposEnPantalla = {};   //Para crear varios planetas
+        Cuerpo * getCuerpo();
+
+        QTimer *timer;              //timer para los intervalos de tiempo entre cada frame
+        float intervalo;                   //intervalo de tiempo entre frames
+        int h_limit;                //longitud en X del mundo
+        int v_limit;                //longitud en Y del mund
+
+
 
 };
 #endif // MAINWINDOW_H

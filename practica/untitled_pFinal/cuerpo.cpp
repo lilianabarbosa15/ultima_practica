@@ -27,7 +27,6 @@ double Cuerpo::getRadio(){
     return radio;
 }
 
-
 double Cuerpo::getAx(){
     return ax;    //retorna la aceleración en x
 }
@@ -44,7 +43,6 @@ double Cuerpo::getVelocidady(){
     return velocidady;
 }
 
-
 void Cuerpo::acelerar(double posicion_X, double posicion_Y){        //necesita las posiciones tomadas de otro cuerpo
     theta = atan((posiciony-posicionyCuerpoCentral)/(posicionx- posicionxCuerpoCentral));   //calculo del angulo
     radio = sqrt(pow((posicion_X-posicionxCuerpoCentral),2) + pow((posicion_Y-posicionyCuerpoCentral),2));
@@ -57,4 +55,9 @@ void Cuerpo::actualizar(double tiempo){                             //calcula la
     velocidady = velocidady + (ay*tiempo);
     posicionx = posicionx + (velocidadx*tiempo) + ((ax*(pow(tiempo,2)))/2);
     posiciony = posiciony + (velocidady*tiempo) + ((ay*(pow(tiempo,2)))/2);
+}
+
+double Cuerpo::getRadioC()
+{
+    return radioC;
 }
