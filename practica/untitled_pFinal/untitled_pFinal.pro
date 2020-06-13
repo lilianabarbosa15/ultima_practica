@@ -17,11 +17,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     cuerpo.cpp \
+    grafica.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     cuerpo.h \
+    grafica.h \
     mainwindow.h
 
 FORMS += \

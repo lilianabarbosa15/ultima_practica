@@ -21,18 +21,16 @@ class Cuerpo: public QGraphicsEllipseItem
         double velocidadx;
         double velocidady;
         double distanciaAcuerpocentral;
-    public:
 
+    public:
         Cuerpo(int Posicionx, int Posiciony);
         void calcularAx();
         void calcularAy();
         void calcularTheta(double a, double b); //Calcula theta y lo asigna a la variable privada
         void calcularDistancia(double x1, double y1);   //x1 y y1 son la posicion del sol
-
         void setPosicionx(int posicionx);
         void setPosiciony(int posiciony);
         void setMasa(double masa);
-
         double getPosicionx();  //muestra la posicion en x
         double getPosiciony();  //muestra la posicion en y
         double getAx(); //muestra la aceleracion en x
