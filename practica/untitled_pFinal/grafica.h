@@ -2,30 +2,34 @@
 #define GRAFICA_H
 
 
-#include "mainwindow.h"
+//#include <QPainter>
+#include <QGraphicsItem>
+#include <QGraphicsScene>
 #include "cuerpo.h"
 
-class grafica: public QGraphicsItem
+//#include "mainwindow.h"
+
+
+class Grafica: public QGraphicsItem
 {
     public:
 
-        grafica();
-        //~grafica();
+        Grafica(double posicionInicialx_, double posicionInicialy_, double masa_, int radio_, double velocidadx_, double velocidady_);
+        //~Grafica();
+
+        //QRectF boundingRect() const;    //necesario definirla, devuelve el rectangulo que encierra el objeto
+        //void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //define como se pintara el objeto
+        //void setEscala(float s);
+        //void actualizar(float dt);
 
         QGraphicsView *view;
-        Cuerpo * planeta;
+        Cuerpo * getCuerpo();
         QGraphicsScene * escena;
         unsigned int tamanio = 1000;
 
-
-/*
-        QRectF boundingRect() const;    //necesario definirla, devuelve el rectangulo que encierra el objeto
-        void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //define como se pintara el objeto
-        void setEscala(float s);
-        void actualizar(float dt);
-        Cuerpo* getEsf();
-*/
-
+    private:
+        double escala;
+        Cuerpo* cuerpo;
 
 };
 

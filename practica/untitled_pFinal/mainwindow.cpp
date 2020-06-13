@@ -38,7 +38,7 @@ void MainWindow::on_nuevoCuerpo_clicked()
     if(inicio == false){
 
         double posicionInicialX_;
-        posicionInicialX_ = ui->posicionInicialX->value();
+        posicionInicialX_ = ui->posicionInicialX_C->value();
         QString valueAsString = QString::number(posicionInicialX_);
         ui->datosPosicionX->setText(valueAsString);   //Agrega los numeros a una sección en la pantalla
 

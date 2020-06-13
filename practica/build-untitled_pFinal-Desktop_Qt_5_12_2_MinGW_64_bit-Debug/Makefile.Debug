@@ -220,6 +220,7 @@ debug/moc_mainwindow.cpp: ../untitled_pFinal/mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qtouchdevice.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qtabwidget.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qicon.h \
+		ui_mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsView \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsview.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qpainter.h \
@@ -230,10 +231,6 @@ debug/moc_mainwindow.cpp: ../untitled_pFinal/mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qframe.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsscene.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsScene \
-		../../QT/5.12.2/mingw73_64/include/QtCore/QTimer \
-		../../QT/5.12.2/mingw73_64/include/QtCore/qtimer.h \
-		../../QT/5.12.2/mingw73_64/include/QtCore/qbasictimer.h \
-		../../QT/5.12.2/mingw73_64/include/QtCore/QFile \
 		../untitled_pFinal/cuerpo.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/QPainter \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsItem \
@@ -241,7 +238,6 @@ debug/moc_mainwindow.cpp: ../untitled_pFinal/mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtCore/QRectF \
 		../untitled_pFinal/grafica.h \
 		../untitled_pFinal/mainwindow.h \
-		ui_mainwindow.h \
 		debug/moc_predefs.h \
 		../../QT/5.12.2/mingw73_64/bin/moc.exe
 	C:\Users\LILY\Desktop\QT\5.12.2\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/LILY/Desktop/practica/build-untitled_pFinal-Desktop_Qt_5_12_2_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Users/LILY/Desktop/QT/5.12.2/mingw73_64/mkspecs/win32-g++ -IC:/Users/LILY/Desktop/practica/untitled_pFinal -IC:/Users/LILY/Desktop/QT/5.12.2/mingw73_64/include -IC:/Users/LILY/Desktop/QT/5.12.2/mingw73_64/include/QtWidgets -IC:/Users/LILY/Desktop/QT/5.12.2/mingw73_64/include/QtGui -IC:/Users/LILY/Desktop/QT/5.12.2/mingw73_64/include/QtANGLE -IC:/Users/LILY/Desktop/QT/5.12.2/mingw73_64/include/QtCore -I. -IC:/Users/LILY/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -IC:/Users/LILY/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -IC:/Users/LILY/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -IC:/Users/LILY/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -IC:/Users/LILY/Desktop/QT/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -IC:/Users/LILY/Desktop/QT/Tools/mingw730_64/x86_64-w64-mingw32/include ..\untitled_pFinal\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -477,6 +473,7 @@ debug/grafica.o: ../untitled_pFinal/grafica.cpp ../untitled_pFinal/grafica.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qtouchdevice.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qtabwidget.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qicon.h \
+		ui_mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsView \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsview.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qpainter.h \
@@ -487,16 +484,11 @@ debug/grafica.o: ../untitled_pFinal/grafica.cpp ../untitled_pFinal/grafica.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qframe.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsscene.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsScene \
-		../../QT/5.12.2/mingw73_64/include/QtCore/QTimer \
-		../../QT/5.12.2/mingw73_64/include/QtCore/qtimer.h \
-		../../QT/5.12.2/mingw73_64/include/QtCore/qbasictimer.h \
-		../../QT/5.12.2/mingw73_64/include/QtCore/QFile \
 		../untitled_pFinal/cuerpo.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/QPainter \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsItem \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsitem.h \
 		../../QT/5.12.2/mingw73_64/include/QtCore/QRectF \
-		ui_mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\grafica.o ..\untitled_pFinal\grafica.cpp
 
@@ -607,6 +599,7 @@ debug/main.o: ../untitled_pFinal/main.cpp ../untitled_pFinal/mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qtouchdevice.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qtabwidget.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qicon.h \
+		ui_mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsView \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsview.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qpainter.h \
@@ -617,17 +610,12 @@ debug/main.o: ../untitled_pFinal/main.cpp ../untitled_pFinal/mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qframe.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsscene.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsScene \
-		../../QT/5.12.2/mingw73_64/include/QtCore/QTimer \
-		../../QT/5.12.2/mingw73_64/include/QtCore/qtimer.h \
-		../../QT/5.12.2/mingw73_64/include/QtCore/qbasictimer.h \
-		../../QT/5.12.2/mingw73_64/include/QtCore/QFile \
 		../untitled_pFinal/cuerpo.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/QPainter \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsItem \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsitem.h \
 		../../QT/5.12.2/mingw73_64/include/QtCore/QRectF \
 		../untitled_pFinal/grafica.h \
-		ui_mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QApplication \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qapplication.h \
 		../../QT/5.12.2/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -744,6 +732,7 @@ debug/mainwindow.o: ../untitled_pFinal/mainwindow.cpp ../untitled_pFinal/mainwin
 		../../QT/5.12.2/mingw73_64/include/QtGui/qtouchdevice.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qtabwidget.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qicon.h \
+		ui_mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsView \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsview.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/qpainter.h \
@@ -754,17 +743,12 @@ debug/mainwindow.o: ../untitled_pFinal/mainwindow.cpp ../untitled_pFinal/mainwin
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qframe.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsscene.h \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsScene \
-		../../QT/5.12.2/mingw73_64/include/QtCore/QTimer \
-		../../QT/5.12.2/mingw73_64/include/QtCore/qtimer.h \
-		../../QT/5.12.2/mingw73_64/include/QtCore/qbasictimer.h \
-		../../QT/5.12.2/mingw73_64/include/QtCore/QFile \
 		../untitled_pFinal/cuerpo.h \
 		../../QT/5.12.2/mingw73_64/include/QtGui/QPainter \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/QGraphicsItem \
 		../../QT/5.12.2/mingw73_64/include/QtWidgets/qgraphicsitem.h \
 		../../QT/5.12.2/mingw73_64/include/QtCore/QRectF \
 		../untitled_pFinal/grafica.h \
-		ui_mainwindow.h \
 		../../QT/5.12.2/mingw73_64/include/QtCore/QString \
 		../../QT/5.12.2/mingw73_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\untitled_pFinal\mainwindow.cpp

@@ -6,7 +6,8 @@
 
 //extern Ui::MainWindow* identificador;
 
-grafica::grafica(){
+Grafica::Grafica(double posicionInicialx_, double posicionInicialy_, double masa_, int radio_, double velocidadx_, double velocidady_){
+
     qDebug() << "thread created------------------------" << endl;
 
     //Crear la escena
@@ -21,15 +22,14 @@ grafica::grafica(){
     escena->setSceneRect(0,0,tamanio,tamanio);  //Tamaño real del plano donde se graficarán los cuerpos
 
     //Crear el cuerpo central a la escena
-    planeta = new Cuerpo(600,600);      //Al ingresar esos valores se debe mostrar el elemento en esa posicion
-    planeta->setMasa(5000);
+    //planeta = new Cuerpo(600,600,0,0,0,0);      //Al ingresar esos valores se debe mostrar el elemento en esa posicion
 
-    planeta->setRect(0,0,40,40);      //le da forma al cuerpo central
-    planeta->setBrush(Qt::yellow);      //le da el color al cuerpo central
+    //planeta->setRect(0,0,40,40);      //le da forma al cuerpo central
+    //planeta->setBrush(Qt::yellow);      //le da el color al cuerpo central
 
     //Añadir el cuerpo central a la escena
-    planeta->setPos(tamanio/2,tamanio/2);   //se le pone la posicion al cuerpo
-    escena->addItem(planeta);
+    //planeta->setPos(tamanio/2,tamanio/2);   //se le pone la posicion al cuerpo
+    //escena->addItem(planeta);
 
 }
 

@@ -1,65 +1,60 @@
 #include "cuerpo.h"
-#include <math.h>
 
-//#define Gravitacion 6.67384*pow(10,-11);
-#define Gravitacion 1;
-
-Cuerpo::Cuerpo(int posicionInicialx, int posicionInicialy){
-    this->posicionInicialx = posicionInicialx;
-    this->posicionInicialy = posicionInicialy;
-}
-
-void Cuerpo::calcularAx(){
-    (this->ax) = Gravitacion;
-    (this->ax) *= ((this->masa) * cos(this->theta));
-    (this->ax) /= pow(this->distanciaAcuerpocentral,2);
-}
-
-void Cuerpo::calcularAy(){
-    (this->ay) = Gravitacion;
-    (this->ay) *= ((this->masa) * sin(this->theta));
-    (this->ay) /= pow(this->distanciaAcuerpocentral,2);
-}
-
-void Cuerpo::calcularTheta(double posicionxCuerpoCentral, double posicionyCuerpoCentral){
-    double parametroTheta = (this->posiciony-posicionyCuerpoCentral)/(this->posicionx- posicionxCuerpoCentral);
-    this->theta = atan(parametroTheta);
-}
-
-void Cuerpo::calcularDistancia(double x1, double y1){
-    double distancia = pow(this->posicionx-x1,2)-pow(this->posiciony-y1,2);
-    this->distanciaAcuerpocentral = (sqrt(distancia));
-}
-
-void Cuerpo::setPosicionx(int posicionx){
-    this->posicionx = posicionx;
-}
-
-void Cuerpo::setPosiciony(int posiciony){
-    this->posiciony = posiciony;
-}
-
-void Cuerpo::setMasa(double masa){
-    this->masa = masa;
+Cuerpo::Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, int radio_, double velocidadx_, double velocidady_){
+    this->posicionx = posicionInicialx_;
+    this->posiciony = posicionInicialy_;
+    this->masa = masa_;
+    this->radioC = radio_;
+    this->velocidadx = velocidadx_;
+    this->velocidady = velocidady_;
+    ax = 0;
+    ay = 0;
 }
 
 double Cuerpo::getPosicionx(){
-    return this->posicionx;
+    return posicionx;
 }
 
 double Cuerpo::getPosiciony(){
-    return this->posiciony;
+    return posiciony;
 }
 
+double Cuerpo::getMasa(){
+    return masa;    //retorna el valor de la masa del cuerpo
+}
+
+double Cuerpo::getRadio(){
+    return radio;
+}
+
+
 double Cuerpo::getAx(){
-    return this->ax;    //retorna la aceleración en x
+    return ax;    //retorna la aceleración en x
 }
 
 double Cuerpo::getAy(){
-    return this->ay;    //retorna la aceleración en y
+    return ay;    //retorna la aceleración en y
 }
 
-double Cuerpo::getMasa()
-{
-    return this->masa;    //retorna la aceleración en y
+double Cuerpo::getVelocidadx(){
+    return velocidadx;
+}
+
+double Cuerpo::getVelocidady(){
+    return velocidady;
+}
+
+
+void Cuerpo::acelerar(double posicion_X, double posicion_Y){        //necesita las posiciones tomadas de otro cuerpo
+    theta = atan((posiciony-posicionyCuerpoCentral)/(posicionx- posicionxCuerpoCentral));   //calculo del angulo
+    radio = sqrt(pow((posicion_X-posicionxCuerpoCentral),2) + pow((posicion_Y-posicionyCuerpoCentral),2));
+    ax = ax + (((Gravitacion * masaCuerpoCentral)/(pow(radio,2)))*cos(theta));
+    ay = ay + (((Gravitacion * masaCuerpoCentral)/(pow(radio,2)))* sin(theta));
+}
+
+void Cuerpo::actualizar(double tiempo){                             //calcula las posiciones en x y y de los cuerpos.
+    velocidadx = velocidadx + (ax*tiempo);
+    velocidady = velocidady + (ay*tiempo);
+    posicionx = posicionx + (velocidadx*tiempo) + ((ax*(pow(tiempo,2)))/2);
+    posiciony = posiciony + (velocidady*tiempo) + ((ay*(pow(tiempo,2)))/2);
 }

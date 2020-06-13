@@ -1,6 +1,8 @@
 #ifndef CUERPO_H
 #define CUERPO_H
 
+//Para hacer los calculos matematicos:
+#include <math.h>
 
 //Para los planetas:
 #include <QPainter>
@@ -12,29 +14,35 @@ class Cuerpo: public QGraphicsEllipseItem
     private:
         double posicionx;
         double posiciony;
-        double posicionInicialx;
-        double posicionInicialy;
-        double ax;
-        double ay;
-        double theta;
         double masa;
+        double radioC;
         double velocidadx;
         double velocidady;
-        double distanciaAcuerpocentral;
+        double ax;
+        double ay;
+        double Gravitacion = 6.67384*(pow(10,-11));
+
+        double theta;
+        double radio;
+        double posicionxCuerpoCentral;  //posición en x del sol
+        double posicionyCuerpoCentral;  //posición en y del sol
+        double masaCuerpoCentral;       //masa del sol
 
     public:
-        Cuerpo(int Posicionx, int Posiciony);
-        void calcularAx();
-        void calcularAy();
-        void calcularTheta(double a, double b); //Calcula theta y lo asigna a la variable privada
-        void calcularDistancia(double x1, double y1);   //x1 y y1 son la posicion del sol
-        void setPosicionx(int posicionx);
-        void setPosiciony(int posiciony);
-        void setMasa(double masa);
+        Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, int radio_, double velocidadx_, double velocidady_);
+
         double getPosicionx();  //muestra la posicion en x
         double getPosiciony();  //muestra la posicion en y
+        double getMasa(); //muestra la masa del cuerpo
+        double getRadio(); //muestra el radio del cuerpo
+
         double getAx(); //muestra la aceleracion en x
         double getAy(); //muestra la aceleracion en y
-        double getMasa(); //muestra la masa del cuerpo
+        double getVelocidadx(); //muestra la velocidad en x
+        double getVelocidady(); //muestra la velocidad en y
+
+        void acelerar(double posicion_X, double posicion_Y);
+        void actualizar(double tiempo);
+
 };
 #endif // CUERPO_H
