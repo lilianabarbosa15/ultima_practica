@@ -33,6 +33,9 @@ class MainWindow : public QMainWindow
     private:
         Ui::MainWindow *ui;
         QVector<Grafica*> cuerposEnPantalla = {};   //Para crear varios planetas
+        bool estado;
+
+
         Cuerpo * getCuerpo();
 
         QTimer *timer;              //timer para los intervalos de tiempo entre cada frame

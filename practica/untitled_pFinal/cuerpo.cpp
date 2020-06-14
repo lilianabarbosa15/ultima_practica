@@ -1,12 +1,12 @@
 #include "cuerpo.h"
 
-Cuerpo::Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, int radio_, double velocidadx_, double velocidady_){
-    this->posicionx = posicionInicialx_;
-    this->posiciony = posicionInicialy_;
-    this->masa = masa_;
-    this->radioC = radio_;
-    this->velocidadx = velocidadx_;
-    this->velocidady = velocidady_;
+Cuerpo::Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombreC){
+    posicionx = posicionInicialx_;
+    posiciony = posicionInicialy_;
+    masa = masa_;
+    nombre = nombreC;
+    velocidadx = velocidadx_;
+    velocidady = velocidady_;
     ax = 0;
     ay = 0;
 }
@@ -57,7 +57,7 @@ void Cuerpo::actualizar(double tiempo){                             //calcula la
     posiciony = posiciony + (velocidady*tiempo) + ((ay*(pow(tiempo,2)))/2);
 }
 
-double Cuerpo::getRadioC()
+QString Cuerpo::getNombre()
 {
-    return radioC;
+    return nombre;
 }

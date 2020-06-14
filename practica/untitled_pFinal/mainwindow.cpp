@@ -8,16 +8,17 @@
 
 extern QGraphicsScene * escena;
 extern unsigned int tamanio;
+extern unsigned int tamanioSol;
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
 
-    //Crear la escena
+    //Crear la escena:
     escena = new QGraphicsScene();
     //escena->setBackgroundBrush(QImage(":/FONDO_escena.png"));  //Fondo del espacio
 
-    //Que se pueda ver todo
+    //Que se pueda ver todo:
     ui->Grafica->setScene(escena);
     escena->setSceneRect(0,0,tamanio,tamanio);  //Tamaño real del plano donde se graficarán los cuerpos
 }
@@ -42,28 +43,49 @@ void MainWindow::on_pushButton_clicked()
     }
 }
 
-void MainWindow::on_nuevoCuerpo_clicked()
-{
+void MainWindow::on_nuevoCuerpo_clicked(){
+
     if(inicio == false){
+        estado = false; //inicia suponiendo que el cuerpo no se encuentra
+
+        qDebug() << "NUEVO PLANETA" ;
+
+        for(int i=0;i<cuerposEnPantalla.size();i++){
+            if(cuerposEnPantalla.at(i)->getCuerpo()->getNombre() == ui->nombre_C->text()){
+                estado = true;  //el cuerpo se encuentra en el vector
+                break;
+            }
+        }
+
+        if (estado == false){
+            cuerposEnPantalla.append(new Grafica(ui->posicionInicialX_C->value(),
+                                                 ui->posicionInicialY_C->value(),
+                                                 ui->masa_C->value(),
+                                                 ui->velocidadInicialX_C->value(),
+                                                 ui->velocidadInicialY_C->value(),
+                                                 ui->nombre_C->text()));    //Debe recibir todas las caracteristicas de los planetas
+            ui->listaPlanetas->addItem(ui->nombre_C->text());
+        }
+
+        if(estado == true)
+            ui->listaPlanetas->clear();
+
+/*
 
         //double posicionInicialX_;
         //posicionInicialX_ = ui->posicionInicialX_C->value();
         //QString valueAsString = QString::number(posicionInicialX_);
         //ui->datosPosicionX->setText(valueAsString);   //Agrega los numeros a una sección en la pantalla
+        //  ((cuerpo->posicionxCuerpoCentral)+posicionInicialx_)-tamanioPlaneta/2,((cuerpo->posicionyCuerpoCentral)-posicionInicialy_)-tamanioPlaneta/2
 
 
-        qDebug() << "NUEVO PLANETA" ;
-
-
-        cuerposEnPantalla.append(new Grafica(600,600,7000,500,0,0));//Debe recibir ui, y todas las caracteristicas de los planetas
 
         for(int i=0;i<cuerposEnPantalla.size();i++){
             cuerposEnPantalla.at(i)->actualizar(intervalo);
             escena->addItem(cuerposEnPantalla.at(i));
             qDebug() << "aja";
         }
-
-
+*/
     }
 }
 

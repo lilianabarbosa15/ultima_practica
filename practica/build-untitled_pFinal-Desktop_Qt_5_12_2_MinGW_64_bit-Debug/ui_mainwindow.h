@@ -58,7 +58,7 @@ public:
     QWidget *scrollAreaWidgetContents_3;
     QLabel *label_2;
     QFrame *line;
-    QListWidget *listWidget;
+    QListWidget *listaPlanetas;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -67,6 +67,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(1091, 594);
+        MainWindow->setMinimumSize(QSize(1091, 594));
+        MainWindow->setMaximumSize(QSize(1091, 594));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         Grafica_3 = new QScrollArea(centralwidget);
@@ -176,9 +178,9 @@ public:
         line->setGeometry(QRect(20, 30, 281, 20));
         line->setFrameShape(QFrame::HLine);
         line->setFrameShadow(QFrame::Sunken);
-        listWidget = new QListWidget(scrollAreaWidgetContents_3);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
-        listWidget->setGeometry(QRect(55, 60, 211, 192));
+        listaPlanetas = new QListWidget(scrollAreaWidgetContents_3);
+        listaPlanetas->setObjectName(QString::fromUtf8("listaPlanetas"));
+        listaPlanetas->setGeometry(QRect(55, 60, 211, 192));
         seguimientoCuerpos->setWidget(scrollAreaWidgetContents_3);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);

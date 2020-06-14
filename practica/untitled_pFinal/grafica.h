@@ -10,7 +10,7 @@
 class Grafica: public QGraphicsItem
 {
     public:
-        Grafica(double posicionInicialx_, double posicionInicialy_, double masa_, int radio_, double velocidadx_, double velocidady_);
+        Grafica(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombre);
         ~Grafica();
         QRectF boundingRect() const;    //necesario definirla, devuelve el rectangulo que encierra el objeto
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget); //define como se pintara el objeto

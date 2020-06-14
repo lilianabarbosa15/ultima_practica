@@ -4,14 +4,21 @@
 
 //extern Ui::MainWindow* identificador;
 extern QGraphicsScene * escena;
-extern unsigned int tamanio;
+extern unsigned int tamanioSol;
+extern unsigned int tamanioPlaneta;
 
-Grafica::Grafica(double posicionInicialx_, double posicionInicialy_, double masa_, int radio_, double velocidadx_, double velocidady_): escala(0.07){
+Grafica::Grafica(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombre): escala(0.07){
 
-    qDebug() << "thread created------------------------" << endl;
-    cuerpo = new Cuerpo(posicionInicialx_, posicionInicialy_, masa_, radio_, velocidadx_, velocidady_);
+    qDebug() << "CUERPO AÑADIDO -   -   -   -   -   -   -   -   -   -   -   -   -" << endl;
 
-    //cuerpo->paint();
+    cuerpo = new Cuerpo(posicionInicialx_, posicionInicialy_, masa_, velocidadx_, velocidady_, nombre);
+
+    cuerpo->setRect(0,0,tamanioPlaneta, tamanioPlaneta);      //le da forma al cuerpo en orbita
+    cuerpo->setBrush(Qt::cyan);      //le da el color al cuerpo en orbita
+    cuerpo->setPos(((cuerpo->posicionxCuerpoCentral)+posicionInicialx_)-tamanioPlaneta/2,((cuerpo->posicionyCuerpoCentral)-posicionInicialy_)-tamanioPlaneta/2);   //se le pone la posicion al cuerpo
+    escena->addItem(cuerpo);    //se añade el cuerpo a la escena
+
+
 /*
     cuerpo->setRect(0,0,40,40);      //le da forma al cuerpo central
     cuerpo->setBrush(Qt::yellow);      //le da el color al cuerpo central
@@ -29,7 +36,7 @@ Grafica::~Grafica(){
 
 QRectF Grafica::boundingRect() const {
     qDebug() << "pasa por boundingRect()-----------------------" << endl;
-    return QRectF(-1*escala*cuerpo->getRadioC(),-1*escala*cuerpo->getRadioC(),2*escala*cuerpo->getRadioC(),2*escala*cuerpo->getRadioC());
+    return QRectF(-1*escala*cuerpo->getRadio(),-1*escala*cuerpo->getRadio(),2*escala*cuerpo->getRadio(),2*escala*cuerpo->getRadio());
 }
 
 void Grafica::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){

@@ -9,28 +9,34 @@
 #include <QGraphicsItem>
 #include <QRectF>
 
+extern unsigned int tamanio;
+
 class Cuerpo: public QGraphicsEllipseItem
 {
     private:
+        double Gravitacion = 6.67384*(pow(10,-11));
+
+        //Lo que se le pide al usuario:
         double posicionx;
         double posiciony;
         double masa;
-        double radioC;
         double velocidadx;
         double velocidady;
+        QString nombre;
+
+        //Valores que se calculan para cada planeta:
         double ax;
         double ay;
-        double Gravitacion = 6.67384*(pow(10,-11));
-
         double theta;
         double radio;
-        double posicionxCuerpoCentral;  //posición en x del sol
-        double posicionyCuerpoCentral;  //posición en y del sol
+
+    public: //Valores del sol necesarios para todos los calculos:
+        double posicionxCuerpoCentral = (tamanio/2);  //posición en x del sol
+        double posicionyCuerpoCentral = (tamanio/2);  //posición en y del sol
         double masaCuerpoCentral;       //masa del sol
 
     public:
-        Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, int radio_, double velocidadx_, double velocidady_);
-
+        Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombre);
         double getPosicionx();  //muestra la posicion en x
         double getPosiciony();  //muestra la posicion en y
         double getMasa(); //muestra la masa del cuerpo
@@ -44,7 +50,6 @@ class Cuerpo: public QGraphicsEllipseItem
         void acelerar(double posicion_X, double posicion_Y);
         void actualizar(double tiempo);
 
-        double getRadioC();
-
+        QString getNombre();
 };
 #endif // CUERPO_H

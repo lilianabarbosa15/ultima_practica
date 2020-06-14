@@ -5,6 +5,8 @@
 
 QGraphicsScene * escena;
 unsigned int tamanio = 1000;
+unsigned int tamanioSol = 40;
+unsigned int tamanioPlaneta = 10;
 
 int main(int argc, char *argv[])
 {
