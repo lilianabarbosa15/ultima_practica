@@ -68,7 +68,8 @@ void MainWindow::on_nuevoCuerpo_clicked(){
         }
 
         if(estado == true)
-            ui->listaPlanetas->clear();
+            ui->listaPlanetas->clear(); //la idea es borrar toda la lista y reescribirla
+                                        //con los planetas que se encuentran en escena como tal
 
 /*
 

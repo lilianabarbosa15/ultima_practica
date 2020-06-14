@@ -1,7 +1,11 @@
 #include "mainwindow.h"
-#include "grafica.h"
+#include "bienvenida.h"
+
+#include "n.h"
 
 #include <QApplication>
+
+#include <QMessageBox>
 
 QGraphicsScene * escena;
 unsigned int tamanio = 1000;
@@ -13,7 +17,12 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     MainWindow w;
-    w.show();
+    w.hide();
+
+    Bienvenida y;
+    y.show();
+
+    //w.show();
 
     return a.exec();
 }
