@@ -43,18 +43,26 @@ void Simulacion::on_nuevoCuerpo_clicked(){
 
     if(inicio == false){
 
-        estado = false; //inicia suponiendo que el cuerpo no se encuentra en el QVector
-        qDebug() << "cuerpos En Pantalla: ";
+        estado = false; //supone que el cuerpo no se encuentra en el QVector
+                        //que tiene nombre
+                        //que su masa es menor que la del sol y mayor a cero
+                        //el cuerpo se encuentra dentro de la escena
 
-        for(int i=1;i<cuerposEnPantalla.size();i++){
-            if(cuerposEnPantalla.at(i)->getCuerpo()->getNombre() == ui->nombre_C->text().toUpper()){
-                qDebug() << cuerposEnPantalla.at(i)->getCuerpo()->getNombre();
-                estado = true;  //el cuerpo se encuentra en el vector
-                break;
+        if(abs(ui->posicionInicialX_C->value())>=fueradeLimites || abs(ui->posicionInicialY_C->value())>=fueradeLimites)
+            estado = true; //el cuerpo se sale de la escena
+
+        else if(ui->nombre_C->text()=="" || ui->masa_C->value()==0 || ui->masa_C->value()>cuerposEnPantalla.at(0)->getCuerpo()->getMasa())
+            estado = true;  //el cuerpo no tiene nombre, o tiene masa cero o mayor a la del sol
+
+        else{
+            for(int i=1;i<cuerposEnPantalla.size();i++){
+                if(cuerposEnPantalla.at(i)->getCuerpo()->getNombre() == ui->nombre_C->text().toUpper()){
+                    estado = true;  //el cuerpo se encuentra en el vector
+                    break;
+                }
             }
         }
-
-        qDebug() << endl << estado;
+        //qDebug() << "estado: " << estado;
 
         if (estado == false){
             cuerposEnPantalla.append(new Grafica(ui->posicionInicialX_C->value(),
@@ -63,11 +71,9 @@ void Simulacion::on_nuevoCuerpo_clicked(){
                                                  ui->velocidadInicialX_C->value(),
                                                  ui->velocidadInicialY_C->value(),
                                                  ui->nombre_C->text().toUpper(), 1));    //Debe recibir todas las caracteristicas de los planetas
-            ui->listaPlanetas->addItem(ui->nombre_C->text().toUpper());
+            ui->listaPlanetas->addItem(ui->nombre_C->text().toUpper()); //Se agrega el cuerpo a una lista para hacerle seguimiento
         }
-
-        //if(estado == true)
-        //    ui->listaPlanetas->clear(); //la idea es borrar toda la lista y reescribirla con los planetas que se encuentran en escena como tal
+        //if(estado == true) ui->listaPlanetas->clear(); //la idea es borrar toda la lista y reescribirla con los planetas que se encuentran en escena como tal
     }
 }
 
@@ -75,9 +81,6 @@ void Simulacion::on_iniciarSimulacion_clicked(){
 
     if(inicio == false){
         inicio = true; //Inicia la simulación y no permite agregar más planetas
-
-        //Inicia la ejecución de la simulación   <-----------------------------
-
-        //orbitas.start();
+        //Inicia la ejecución de la simulación                                      <-----------------------------
     }
 }

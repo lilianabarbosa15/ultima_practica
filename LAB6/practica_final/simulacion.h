@@ -8,6 +8,8 @@
 #include "cuerpo.h"
 #include "grafica.h"
 
+extern unsigned int tamanioPlaneta;
+
 namespace Ui {
 class Simulacion;
 }
@@ -31,19 +33,14 @@ private slots:
 private:
     Ui::Simulacion *ui;
     bool estado;
-
     Cuerpo* cuerpocentral;
-
-
+    unsigned int fueradeLimites = ((tamanio/2)+(tamanioPlaneta/2));
 
 
     Cuerpo * getCuerpo();
 
     QTimer *timer;              //timer para los intervalos de tiempo entre cada frame
     float intervalo;                   //intervalo de tiempo entre frames
-    int h_limit;                //longitud en X del mundo
-    int v_limit;                //longitud en Y del mundo
-
 };
 
 #endif // SIMULACION_H
