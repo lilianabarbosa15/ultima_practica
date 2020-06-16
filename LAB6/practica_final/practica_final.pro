@@ -20,16 +20,19 @@ SOURCES += \
     grafica.cpp \
     main.cpp \
     mainwindow.cpp \
+    seguimiento.cpp \
     simulacion.cpp
 
 HEADERS += \
     cuerpo.h \
     grafica.h \
     mainwindow.h \
+    seguimiento.h \
     simulacion.h
 
 FORMS += \
     mainwindow.ui \
+    seguimiento.ui \
     simulacion.ui
 
 # Default rules for deployment.

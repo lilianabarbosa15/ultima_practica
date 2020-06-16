@@ -14,12 +14,18 @@ extern unsigned int tamanio;    //tamaño de la escena
 class Cuerpo: public QGraphicsEllipseItem
 {
     private:
-        double Gravitacion = 6.67384*(pow(10,-11));
+        double Gravitacion;
+        //Variables iniciales que no se modifican:
+        double pos_inicial_X;
+        double pos_inicial_Y;
+        double vel_inicial_X;
+        double vel_inicial_Y;
 
         //Lo que se le pide al usuario:
         double posicionx;
         double posiciony;
         double masa;
+        double radio;
         double velocidadx;
         double velocidady;
         QString nombre;
@@ -28,15 +34,14 @@ class Cuerpo: public QGraphicsEllipseItem
         double ax;
         double ay;
         double theta;
-        double radio;
+        double r;
 
     public: //Valores del sol necesarios para todos los calculos:
-        double posicionxCuerpoCentral = (tamanio/2);  //posición en x del sol
-        double posicionyCuerpoCentral = (tamanio/2);  //posición en y del sol
+        double posicionCuerpoCentral = (tamanio/2);  //posición x, y del sol
         //masa del sol tambien pero es una variable que se encuentra en un QVector global
 
     public:
-        Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombre);
+        Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombre, double radio_);
         double getPosicionx();  //muestra la posicion en x
         double getPosiciony();  //muestra la posicion en y
         double getMasa(); //muestra la masa del cuerpo
@@ -46,9 +51,10 @@ class Cuerpo: public QGraphicsEllipseItem
         double getAy(); //muestra la aceleracion en y
         double getVelocidadx(); //muestra la velocidad en x
         double getVelocidady(); //muestra la velocidad en y
+        double getTheta(); //muestra el angulo
 
-        void acelerar(double posicion_X, double posicion_Y);
-        void actualizar(double tiempo);
+        void acelerar();
+        void actualizar(float dt);
 
         QString getNombre();
 

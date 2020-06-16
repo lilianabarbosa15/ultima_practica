@@ -6,23 +6,10 @@ extern unsigned int tamanioPlaneta;
 
 #include <QDebug>
 
-Grafica::Grafica(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombre, unsigned short int tipo): escala(0.07){
+Grafica::Grafica(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombre, double radio_, unsigned short int tipo): escala(1){
 
     qDebug() << "PLANETA AÑADIDO." << endl;
-
-    cuerpo = new Cuerpo(posicionInicialx_, posicionInicialy_, masa_, velocidadx_, velocidady_, nombre);
-
-    if(tipo == 1){ //se dibuja un planeta
-        cuerpo->setRect(0,0,tamanioPlaneta, tamanioPlaneta);      //le da forma al cuerpo en orbita
-        cuerpo->setBrush(Qt::cyan);      //le da el color al cuerpo en orbita
-        cuerpo->setPos(((cuerpo->posicionxCuerpoCentral)+posicionInicialx_)-tamanioPlaneta/2,((cuerpo->posicionyCuerpoCentral)-posicionInicialy_)-tamanioPlaneta/2);   //se le pone la posicion al cuerpo
-    }
-    else{
-        cuerpo->setRect(0,0,tamanioSol, tamanioSol);      //le da forma al cuerpo central
-        cuerpo->setBrush(Qt::yellow);      //le da el color al cuerpo central
-        cuerpo->setPos((tamanio/2)-(tamanioSol/2), (tamanio/2)-(tamanioSol/2));   //se le pone la posicion al cuerpo central
-    }
-    escena->addItem(cuerpo);    //se añade el cuerpo a la escena
+    cuerpo = new Cuerpo(posicionInicialx_, posicionInicialy_, masa_, velocidadx_, velocidady_, nombre, radio_);
 }
 
 Grafica::~Grafica(){
@@ -42,11 +29,37 @@ void Grafica::setEscala(float s){
     escala = s;
 }
 
-void Grafica::actualizar(float intervalo){
-    cuerpo->actualizar(intervalo);
-    setPos(cuerpo->getPosicionx()*escala,(-cuerpo->getPosiciony())*escala);
+void Grafica::actualizar(float dt){
+    cuerpo->actualizar(dt);
+    qDebug() << "x[" << ((cuerpo->posicionCuerpoCentral)+cuerpo->getPosicionx())*escala << "], " <<
+                "y[" << ((cuerpo->posicionCuerpoCentral)-cuerpo->getPosiciony())*escala << "], " <<
+                "theta[" << cuerpo->getTheta() << "], " <<
+                "ax[" << cuerpo->getAx() << "], " <<
+                "ay[" << cuerpo->getAy() << "], " <<
+                "vx[" << cuerpo->getVelocidadx() << "], " <<
+                "vy[" << cuerpo->getVelocidady() << "]";
+
+    setPos(((cuerpo->posicionCuerpoCentral)+cuerpo->getPosicionx())*escala,
+           ((cuerpo->posicionCuerpoCentral)-cuerpo->getPosiciony())*escala);
 }
 
 Cuerpo *Grafica::getCuerpo(){
     return cuerpo;
 }
+
+
+/*
+   Grafica::Grafica
+
+    if(tipo == 1){ //se dibuja un planeta
+        cuerpo->setRect(0,0,tamanioPlaneta, tamanioPlaneta);      //le da forma al cuerpo en orbita
+        cuerpo->setBrush(Qt::cyan);      //le da el color al cuerpo en orbita
+        cuerpo->setPos(((cuerpo->posicionxCuerpoCentral)+posicionInicialx_)-tamanioPlaneta/2,((cuerpo->posicionyCuerpoCentral)-posicionInicialy_)-tamanioPlaneta/2);   //se le pone la posicion al cuerpo
+    }
+    else{
+        cuerpo->setRect(0,0,tamanioSol, tamanioSol);      //le da forma al cuerpo central
+        cuerpo->setBrush(Qt::yellow);      //le da el color al cuerpo central
+        cuerpo->setPos((tamanio/2)-(tamanioSol/2), (tamanio/2)-(tamanioSol/2));   //se le pone la posicion al cuerpo central
+    }
+    escena->addItem(cuerpo);    //se añade el cuerpo a la escena
+*/

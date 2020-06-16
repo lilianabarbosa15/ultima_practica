@@ -3,15 +3,25 @@
 
 extern QVector<Grafica*> cuerposEnPantalla;
 
-Cuerpo::Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombreC){
+#include <QDebug> //
+
+Cuerpo::Cuerpo(double posicionInicialx_, double posicionInicialy_, double masa_, double velocidadx_, double velocidady_, QString nombreC, double radio_){
+
+    pos_inicial_X = posicionInicialx_;  //no se modifica
+    pos_inicial_Y = posicionInicialy_;  //no se modifica
+    vel_inicial_X = velocidadx_;    //no se modifica
+    vel_inicial_Y = velocidady_;    //no se modifica
+
     posicionx = posicionInicialx_;
     posiciony = posicionInicialy_;
     masa = masa_;
     nombre = nombreC;
     velocidadx = velocidadx_;
     velocidady = velocidady_;
+    Gravitacion = 6.67384*(pow(10,-11));
     ax = 0;
     ay = 0;
+    radio = radio_;
 }
 
 double Cuerpo::getPosicionx(){
@@ -46,30 +56,33 @@ double Cuerpo::getVelocidady(){
     return velocidady;
 }
 
-void Cuerpo::acelerar(double posicion_X, double posicion_Y){        //necesita las posiciones tomadas de otro cuerpo
-    theta = atan((posiciony-posicionyCuerpoCentral)/(posicionx- posicionxCuerpoCentral));   //calculo del angulo
-    radio = sqrt(pow((posicion_X-posicionxCuerpoCentral),2) + pow((posicion_Y-posicionyCuerpoCentral),2));
-    //ax = ax + (((Gravitacion * masaCuerpoCentral)/(pow(radio,2)))*cos(theta));
-    //ay = ay + (((Gravitacion * masaCuerpoCentral)/(pow(radio,2)))* sin(theta));
-
-    ax = ax + (((Gravitacion * (cuerposEnPantalla.at(0)->getCuerpo()->getMasa()))/(pow(radio,2)))*cos(theta));
-    ay = ay + (((Gravitacion * (cuerposEnPantalla.at(0)->getCuerpo()->getMasa()))/(pow(radio,2)))* sin(theta));
-
+double Cuerpo::getTheta() {
+    return theta;
 }
 
-void Cuerpo::actualizar(double tiempo){                             //calcula las posiciones en x y y de los cuerpos.
-    velocidadx = velocidadx + (ax*tiempo);
-    velocidady = velocidady + (ay*tiempo);
-    posicionx = posicionx + (velocidadx*tiempo) + ((ax*(pow(tiempo,2)))/2);
-    posiciony = posiciony + (velocidady*tiempo) + ((ay*(pow(tiempo,2)))/2);
+void Cuerpo::acelerar(){        //necesita las posiciones tomadas de otro cuerpo
+
+    theta = atan((posiciony - posicionCuerpoCentral)/(posicionx - posicionCuerpoCentral));   //calculo del angulo
+    r = sqrt(pow((posicionx - posicionCuerpoCentral),2) + pow((posiciony - posicionCuerpoCentral),2));
+    //r = sqrt(pow((posicionx - posicionCuerpoCentral),2) + pow((posiciony - posicionCuerpoCentral),2));
+
+    ax = ((Gravitacion * (cuerposEnPantalla.at(0)->getCuerpo()->getMasa()) * cos(theta))/(pow(r,2)));
+    ay = ((Gravitacion * (cuerposEnPantalla.at(0)->getCuerpo()->getMasa()) * sin(theta))/(pow(r,2)));
 }
 
-QString Cuerpo::getNombre()
-{
+void Cuerpo::actualizar(float dt){                             //calcula las posiciones en x y y de los cuerpos.
+
+    velocidadx = vel_inicial_X + (ax*dt);
+    velocidady = vel_inicial_Y + (ay*dt);
+    posicionx = pos_inicial_X + (velocidadx*dt) + ((ax*(pow(dt,2)))/2);
+    posiciony = pos_inicial_Y + (velocidady*dt) + ((ay*(pow(dt,2)))/2);
+    qDebug() << "posiciony: " << posiciony;
+}
+
+QString Cuerpo::getNombre(){
     return nombre;
 }
 
-void Cuerpo::setMasa(double m)
-{
+void Cuerpo::setMasa(double m){
     masa = m;
 }
